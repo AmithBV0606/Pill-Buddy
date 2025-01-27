@@ -6,5 +6,8 @@ export default{
     DARK_GRAY:'#8f8f8f',
     LIGHT_GRAY_BORDER:'#E5E7EB',
     LIGHT_PRIMARY:'#d1e9ff',
-    GREEN:'#32bf82'
+    GREEN:'#32bf82',
+    SMOKE_WHITE: "#F5F5F5",
+    YELLOW: "#FFA62B",
+    LIGHT_GRAY: "#464655"
 }

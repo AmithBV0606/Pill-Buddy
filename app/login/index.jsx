@@ -7,7 +7,7 @@ export default function LoginScreen() {
   const router = useRouter();
 
   return (
-    <View style={{ backgroundColor: "#FFA62B" }}>
+    <View style={{ backgroundColor: Colors.YELLOW }}>
       {/* Image part :  */}
       <View
         style={{
@@ -35,7 +35,7 @@ export default function LoginScreen() {
           style={{
             fontSize: 30,
             fontWeight: "bold",
-            color: "white",
+            color: Colors.SMOKE_WHITE,
             textAlign: "center",
           }}
         >
@@ -44,7 +44,7 @@ export default function LoginScreen() {
 
         <Text
           style={{
-            color: "white",
+            color: Colors.SMOKE_WHITE,
             textAlign: "center",
             fontSize: 17,
             marginTop: 20
@@ -60,7 +60,7 @@ export default function LoginScreen() {
 
         <Text
           style={{
-            color: "white",
+            color: Colors.SMOKE_WHITE,
             marginTop: 17,
             textAlign: "center",
             fontSize: 9
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    backgroundColor: "#FFA62B",
+    backgroundColor: Colors.YELLOW,
     borderRadius: 99,
     marginTop: 17
   }
