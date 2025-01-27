@@ -9,7 +9,7 @@ import React from "react";
 import Colors from "../../constant/Colors";
 import { useRouter } from "expo-router";
 
-export default function SignIn() {
+export default function SignUp() {
   const router = useRouter();
 
   return (
@@ -20,11 +20,23 @@ export default function SignIn() {
         height: "100%",
       }}
     >
-      <Text style={styles.textHeader}>Let's Sign You In!!</Text>
-      <Text style={styles.subText}>Welcome Back</Text>
-      <Text style={styles.subText}>You've been missed!</Text>
+      <Text style={styles.textHeader}>Create New Account</Text>
 
       {/* Input :  */}
+
+      {/* Full Name :  */}
+      <View
+        style={{
+          marginTop: 25,
+        }}
+      >
+        <Text style={{ color: Colors.SMOKE_WHITE }}>Full Name : </Text>
+        <TextInput
+          placeholder="Enter your fullname"
+          placeholderTextColor={Colors.LIGHT_GRAY}
+          style={styles.textInput}
+        />
+      </View>
 
       {/* Email :  */}
       <View
@@ -55,32 +67,34 @@ export default function SignIn() {
         />
       </View>
 
-      {/* Login button : */}
+      {/* Sign Up button : */}
       <TouchableOpacity style={styles.button}>
-        <Text style={{ fontSize: 17, textAlign: "center" }}>Login</Text>
+        <Text style={{ fontSize: 17, textAlign: "center" }}>Sign Up</Text>
       </TouchableOpacity>
 
-      {/* Styled OR section */}
-      <View
+      {/* Already have an account message : */}
+      <TouchableOpacity
+        onPress={() => router.push("/login/signIn")}
         style={{
-          display: "flex",
+          marginTop: 20,
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: 40,
+          gap: 5
         }}
       >
-        <View style={styles.breakLine} />
-        <Text style={{ color: "#40434E" }}> OR </Text>
-        <View style={styles.breakLine} />
-      </View>
-
-      {/* Signup button : */}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => router.push("/login/signUp")}
-      >
-        <Text style={{ fontSize: 17, textAlign: "center" }}>Sign Up</Text>
+        <Text style={{ color: "#40434E", fontSize: 17 }}>
+          Already have an account? 
+        </Text>
+        <Text
+          style={{
+            fontSize: 17,
+            color: Colors.SMOKE_WHITE,
+            textDecorationLine: "underline"
+          }}
+        >
+          Sign In
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -92,12 +106,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: Colors.SMOKE_WHITE,
     marginTop: 15,
-  },
-  subText: {
-    fontSize: 30,
-    fontWeight: "bold",
-    marginTop: 10,
-    color: Colors.LIGHT_GRAY,
   },
   textInput: {
     padding: 10,
@@ -113,11 +121,5 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: Colors.YELLOW,
     borderRadius: 15,
-  },
-  breakLine: {
-    height: 2,
-    borderRadius: 30,
-    width: "42%",
-    backgroundColor: "#40434E",
   },
 });
