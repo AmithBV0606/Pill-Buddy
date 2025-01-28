@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Tabs, useRouter } from "expo-router";
+import Colors from "../../constant/Colors";
 
 // Tab Icons :
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -24,6 +25,13 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: Colors.PRIMARY,
+          borderTopEndRadius: 20,
+          borderTopStartRadius: 20,
+          position: "absolute" // Changes made by me
+        },
+        tabBarActiveTintColor: "#B0D7FF"
       }}
     >
       <Tabs.Screen
