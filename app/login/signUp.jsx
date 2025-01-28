@@ -4,13 +4,55 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  ToastAndroid,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Colors from "../../constant/Colors";
 import { useRouter } from "expo-router";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "./../../config/FireBaseConfig";
 
 export default function SignUp() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const router = useRouter();
+
+  // Account creation using Firebase :
+  const onCreateAccount = () => {
+    if (!email || !password || !username) {
+      ToastAndroid.showWithGravity(
+        "Please enter all the fields!",
+        ToastAndroid.LONG,
+        ToastAndroid.BOTTOM
+      );
+      Alert.alert("Please enter all the fields!"); // For ios
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        // console.log(user);
+        await updateProfile(user, {
+          displayName: username,
+        });
+        router.replace("(tabs)");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // console.log(errorCode);
+
+        if (errorCode === "auth/email-already-in-use") {
+          ToastAndroid.show("Email already exists.", ToastAndroid.BOTTOM);
+          Alert.alert("Email already exists.");
+        }
+      });
+  };
 
   return (
     <View
@@ -35,6 +77,7 @@ export default function SignUp() {
           placeholder="Enter your fullname"
           placeholderTextColor={Colors.LIGHT_GRAY}
           style={styles.textInput}
+          onChangeText={(value) => setUsername(value)}
         />
       </View>
 
@@ -49,6 +92,7 @@ export default function SignUp() {
           placeholder="jhondoe@gmail.com"
           placeholderTextColor={Colors.LIGHT_GRAY}
           style={styles.textInput}
+          onChangeText={(value) => setEmail(value)}
         />
       </View>
 
@@ -64,11 +108,12 @@ export default function SignUp() {
           placeholderTextColor={Colors.LIGHT_GRAY}
           style={styles.textInput}
           secureTextEntry={true}
+          onChangeText={(value) => setPassword(value)}
         />
       </View>
 
       {/* Sign Up button : */}
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onCreateAccount}>
         <Text style={{ fontSize: 17, textAlign: "center" }}>Sign Up</Text>
       </TouchableOpacity>
 
@@ -80,17 +125,17 @@ export default function SignUp() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          gap: 5
+          gap: 5,
         }}
       >
         <Text style={{ color: "#40434E", fontSize: 17 }}>
-          Already have an account? 
+          Already have an account?
         </Text>
         <Text
           style={{
             fontSize: 17,
             color: Colors.SMOKE_WHITE,
-            textDecorationLine: "underline"
+            textDecorationLine: "underline",
           }}
         >
           Sign In

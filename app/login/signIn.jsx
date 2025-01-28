@@ -4,13 +4,51 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  ToastAndroid,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Colors from "../../constant/Colors";
 import { useRouter } from "expo-router";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./../../config/FireBaseConfig";
 
 export default function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const router = useRouter();
+
+  // To SignIn an existing user :
+  const OnSignInClick = () => {
+    if (!email || !password) {
+      ToastAndroid.showWithGravity(
+        "Please enter both email and password fields!",
+        ToastAndroid.LONG,
+        ToastAndroid.BOTTOM
+      );
+      Alert.alert("Please enter both email and password!"); // For ios
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        router.replace("(tabs)");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        if (errorCode === "auth/invalid-credential") {
+          ToastAndroid.show("Invalid email or password!!", ToastAndroid.BOTTOM);
+          Alert.alert("Invalid email or password!!");
+        }
+      });
+  };
 
   return (
     <View
@@ -37,6 +75,7 @@ export default function SignIn() {
           placeholder="jhondoe@gmail.com"
           placeholderTextColor={Colors.LIGHT_GRAY}
           style={styles.textInput}
+          onChangeText={(value) => setEmail(value)}
         />
       </View>
 
@@ -52,11 +91,12 @@ export default function SignIn() {
           placeholderTextColor={Colors.LIGHT_GRAY}
           style={styles.textInput}
           secureTextEntry={true}
+          onChangeText={(value) => setPassword(value)}
         />
       </View>
 
       {/* Login button : */}
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={OnSignInClick}>
         <Text style={{ fontSize: 17, textAlign: "center" }}>Login</Text>
       </TouchableOpacity>
 
