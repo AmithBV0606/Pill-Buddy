@@ -17,3 +17,16 @@ export const formatTime = (timestamp) => {
 
   return timeString;
 };
+
+export const getDatesRange = (startDate, endDate) => {
+  const start = moment(new Date(startDate), "MM/DD/YYYY");
+  const end = moment(new Date(endDate), "MM/DD/YYYY");
+  const dates = [];
+
+  while (start.isSameOrBefore(end)) {
+    dates.push(start.format("MM/DD/YYYY"));
+    start.add(1, "days");
+  }
+
+  return dates;
+};

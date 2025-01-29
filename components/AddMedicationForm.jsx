@@ -18,6 +18,7 @@ import {
   FormatDate,
   formatDateForText,
   formatTime,
+  getDatesRange,
 } from "../service/ConvertDateTime";
 import { getLocalStorage } from "../service/Storage";
 import { doc, setDoc } from "firebase/firestore";
@@ -60,6 +61,7 @@ export default function AddMedicationForm() {
       return;
     }
 
+    const dates = getDatesRange(formData?.startDate, formData?.endDate);
     setLoading(true);
 
     try {
@@ -67,17 +69,18 @@ export default function AddMedicationForm() {
         ...formData,
         userEmail: user?.email,
         docId: docId,
+        dates: dates,
       });
 
       setLoading(false);
       Alert.alert("Great!", "New Medication added successfully!!", [
         {
           text: "Ok",
-          onPress: () => router.push("(tabs)")
-        }
+          onPress: () => router.push("(tabs)"),
+        },
       ]);
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.log(error);
     }
   };
