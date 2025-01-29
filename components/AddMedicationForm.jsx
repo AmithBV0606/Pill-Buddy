@@ -5,6 +5,8 @@ import {
   TextInput,
   FlatList,
   TouchableOpacity,
+  Alert,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -12,13 +14,24 @@ import Colors from "../constant/Colors";
 import { TypeList, WhenToTake } from "../constant/Options";
 import { Picker } from "@react-native-picker/picker";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
-import { FormatDate, formatDateForText, formatTime } from "../service/ConvertDateTime";
+import {
+  FormatDate,
+  formatDateForText,
+  formatTime,
+} from "../service/ConvertDateTime";
+import { getLocalStorage } from "../service/Storage";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../config/FireBaseConfig";
+import { useRouter } from "expo-router";
 
 export default function AddMedicationForm() {
   const [formData, setFormData] = useState();
   const [showStartDate, setShowStartDate] = useState(false);
   const [showEndDate, setShowEndDate] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({
@@ -27,6 +40,46 @@ export default function AddMedicationForm() {
     }));
 
     // console.log(formData);
+  };
+
+  const saveMedication = async () => {
+    const docId = new Date().toString();
+    const user = await getLocalStorage("userDetails");
+    if (
+      !(
+        formData?.name ||
+        formData?.type ||
+        formData?.dose ||
+        formData?.when ||
+        formData?.startDate ||
+        formData?.endDate ||
+        formData?.reminder
+      )
+    ) {
+      Alert.alert("Please enter all the details.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await setDoc(doc(db, "medication", docId), {
+        ...formData,
+        userEmail: user?.email,
+        docId: docId,
+      });
+
+      setLoading(false);
+      Alert.alert("Great!", "New Medication added successfully!!", [
+        {
+          text: "Ok",
+          onPress: () => router.push("(tabs)")
+        }
+      ]);
+    } catch (error) {
+      setLoading(false)
+      console.log(error);
+    }
   };
 
   return (
@@ -204,14 +257,19 @@ export default function AddMedicationForm() {
             style={styles.icon}
           />
 
-          <Text style={styles.dateText}>{formData?.reminder ?? "Selecet Remainder Time"}</Text>
+          <Text style={styles.dateText}>
+            {formData?.reminder ?? "Selecet Remainder Time"}
+          </Text>
 
           {showTimePicker && (
             <RNDateTimePicker
               mode="time"
               is24Hour={false}
               onChange={(event) => {
-                handleInputChange('reminder', formatTime(event.nativeEvent.timestamp));
+                handleInputChange(
+                  "reminder",
+                  formatTime(event.nativeEvent.timestamp)
+                );
                 setShowTimePicker(false);
               }}
               // default value
@@ -222,8 +280,12 @@ export default function AddMedicationForm() {
       </View>
 
       {/* Add medication button : */}
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Add New Medication</Text>
+      <TouchableOpacity style={styles.button} onPress={saveMedication}>
+        {loading ? (
+          <ActivityIndicator size={"small"} color={"white"} />
+        ) : (
+          <Text style={styles.buttonText}>Add New Medication</Text>
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -287,6 +349,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 17,
     color: "white",
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
