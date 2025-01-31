@@ -24,7 +24,7 @@ export default function MedicationList() {
     moment().format("MM/DD/YYYY")
   );
   const [medList, setMedList] = useState();
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -46,7 +46,7 @@ export default function MedicationList() {
 
       const querySnapShot = await getDocs(q);
       querySnapShot.forEach((doc) => {
-        console.log("docId : " + doc.id + " ==>", doc.data());
+        // console.log("docId : " + doc.id + " ==>", doc.data());
         setMedList((prev) => [...prev, doc.data()]);
       });
       setLoading(false);
