@@ -29,7 +29,7 @@ export default function TabLayout() {
           backgroundColor: Colors.PRIMARY,
           borderTopEndRadius: 20,
           borderTopStartRadius: 20,
-          position: "absolute" // Changes made by me
+          // position: "absolute" // Changes made by me
         },
         tabBarActiveTintColor: "#B0D7FF"
       }}
