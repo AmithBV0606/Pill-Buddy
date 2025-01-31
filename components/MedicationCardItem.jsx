@@ -67,7 +67,8 @@ export default function MedicationCardItem({ medicine, selectedDate="" }) {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: Colors.LIGHT_PRIMARY,
+    // backgroundColor: Colors.LIGHT_PRIMARY,
+    backgroundColor: "#C1BADE",
     borderWidth: 1,
     borderColor: Colors.LIGHT_GRAY_BORDER,
     marginTop: 10,

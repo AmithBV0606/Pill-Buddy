@@ -90,7 +90,7 @@ export default function MedicationList() {
               {
                 backgroundColor:
                   item.formattedDate == selectedDate
-                    ? "#2E8DDC"
+                    ? "#8475BD"
                     : Colors.LIGHT_GRAY_BORDER,
               },
             ]}

@@ -29,6 +29,9 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between",
           width: "100%",
+          borderBottomWidth: 1,
+          borderBottomColor: "#CED7DE",
+          paddingBottom: 5,
         }}
       >
         {/* Image, Name and Emoji : */}
@@ -55,7 +58,7 @@ export default function Header() {
 
         {/* Settings Icon : */}
         <TouchableOpacity onPress={() => router.push("/add-new-medication")}>
-          <Ionicons name="medkit-outline" size={34} color="#48A6EA" />
+          <Ionicons name="medkit-outline" size={34} color="#8475BD" />
         </TouchableOpacity>
       </View>
     </View>

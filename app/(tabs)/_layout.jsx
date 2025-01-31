@@ -31,7 +31,7 @@ export default function TabLayout() {
           borderTopStartRadius: 20,
           // position: "absolute" // Changes made by me
         },
-        tabBarActiveTintColor: "#B0D7FF"
+        tabBarActiveTintColor: "#C1BADE"
       }}
     >
       <Tabs.Screen
