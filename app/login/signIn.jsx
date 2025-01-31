@@ -99,7 +99,7 @@ export default function SignIn() {
 
       {/* Login button : */}
       <TouchableOpacity style={styles.button} onPress={OnSignInClick}>
-        <Text style={{ fontSize: 17, textAlign: "center" }}>Login</Text>
+        <Text style={{ fontSize: 17, textAlign: "center", color: "white" }}>Login</Text>
       </TouchableOpacity>
 
       {/* Styled OR section */}
@@ -122,7 +122,7 @@ export default function SignIn() {
         style={styles.button}
         onPress={() => router.push("/login/signUp")}
       >
-        <Text style={{ fontSize: 17, textAlign: "center" }}>Sign Up</Text>
+        <Text style={{ fontSize: 17, textAlign: "center", color: "white" }}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
   textHeader: {
     fontSize: 30,
     fontWeight: "bold",
-    color: Colors.SMOKE_WHITE,
+    // color: Colors.SMOKE_WHITE,
+    color: "#8B5CC1",
     marginTop: 15,
   },
   subText: {
@@ -153,7 +154,8 @@ const styles = StyleSheet.create({
   button: {
     padding: 15,
     marginTop: 40,
-    backgroundColor: Colors.YELLOW,
+    // backgroundColor: Colors.YELLOW,
+    backgroundColor: "#8B5CC1",
     borderRadius: 15,
   },
   breakLine: {

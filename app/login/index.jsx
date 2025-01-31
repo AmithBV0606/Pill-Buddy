@@ -7,7 +7,12 @@ export default function LoginScreen() {
   const router = useRouter();
 
   return (
-    <View style={{ backgroundColor: Colors.YELLOW }}>
+    <View
+      style={{
+        // backgroundColor: Colors.YELLOW,
+        backgroundColor: "#8B5CC1",
+      }}
+    >
       {/* Image part :  */}
       <View
         style={{
@@ -22,7 +27,7 @@ export default function LoginScreen() {
         />
       </View>
 
-        {/* Text and button : */}
+      {/* Text and button : */}
       <View
         style={{
           padding: 25,
@@ -47,15 +52,18 @@ export default function LoginScreen() {
             color: Colors.SMOKE_WHITE,
             textAlign: "center",
             fontSize: 17,
-            marginTop: 20
+            marginTop: 20,
           }}
         >
           Track your meds, take control of your health. Stay consistant, Stay
           confident!
         </Text>
 
-        <TouchableOpacity style={styles.button} onPress={() => router.push("/login/signIn")}>
-          <Text style={{ textAlign: "center", fontSize: 17 }}>Continue</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("/login/signIn")}
+        >
+          <Text style={{ textAlign: "center", fontSize: 17, color: "white" }}>Continue</Text>
         </TouchableOpacity>
 
         <Text
@@ -63,9 +71,12 @@ export default function LoginScreen() {
             color: Colors.SMOKE_WHITE,
             marginTop: 17,
             textAlign: "center",
-            fontSize: 9
+            fontSize: 9,
           }}
-        >Note : By clicking Continue button, you are argreeing to our Terms & Condition</Text>
+        >
+          Note : By clicking Continue button, you are argreeing to our Terms &
+          Condition
+        </Text>
       </View>
     </View>
   );
@@ -78,8 +89,9 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    backgroundColor: Colors.YELLOW,
+    // backgroundColor: Colors.YELLOW,
+    backgroundColor: "#8B5CC1",
     borderRadius: 99,
-    marginTop: 17
-  }
+    marginTop: 17,
+  },
 });

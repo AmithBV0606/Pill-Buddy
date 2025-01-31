@@ -116,7 +116,7 @@ export default function SignUp() {
 
       {/* Sign Up button : */}
       <TouchableOpacity style={styles.button} onPress={onCreateAccount}>
-        <Text style={{ fontSize: 17, textAlign: "center" }}>Sign Up</Text>
+        <Text style={{ fontSize: 17, textAlign: "center", color: "white" }}>Sign Up</Text>
       </TouchableOpacity>
 
       {/* Already have an account message : */}
@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
   textHeader: {
     fontSize: 30,
     fontWeight: "bold",
+    // color: Colors.SMOKE_WHITE,
     color: Colors.SMOKE_WHITE,
     marginTop: 15,
   },
@@ -166,7 +167,8 @@ const styles = StyleSheet.create({
   button: {
     padding: 15,
     marginTop: 40,
-    backgroundColor: Colors.YELLOW,
+    // backgroundColor: Colors.YELLOW,
+    backgroundColor: "#8B5CC1",
     borderRadius: 15,
   },
 });

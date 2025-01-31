@@ -4,7 +4,7 @@
     "slug": "Pill-Buddy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/Pill-Buddy.webp",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,24 +13,31 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/Pill-Buddy.webp",
+        "backgroundColor": "#0A0A0A"
+      }, 
+      "splash": {
+        "image": "./assets/images/Pill-Buddy.webp",
+        "backgroundColor": "#0A0A0A",
+        "imageWidth": 500,
+        "imageHeight": 500
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/Pill-Buddy.webp"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "image": "./assets/images/images/Pill-Buddy.webp",
+          "imageWidth": 500,
+          "imageHeight": 500,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#0A0A0A"
         }
       ]
     ],
