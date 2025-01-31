@@ -8,7 +8,7 @@ export default function MedicationCardItem({ medicine, selectedDate="" }) {
 
   const checkStatus = () => {
     const data = medicine?.action?.find((item) => item.date == selectedDate);
-    console.log(data);
+    // console.log(data);
     setStatus(data);
   };
 

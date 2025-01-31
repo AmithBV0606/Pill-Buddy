@@ -116,7 +116,7 @@ export default function AddMedicationForm() {
               { marginRight: 10 },
               {
                 backgroundColor:
-                  item?.name === formData?.type?.name ? "#43B0EF" : "white",
+                  item?.name === formData?.type?.name ? "#9B9BBF" : "white",
               },
             ]}
             key={index}
@@ -187,7 +187,7 @@ export default function AddMedicationForm() {
       {/* Start and End date : */}
       <View style={styles.dateInputGroup}>
         <TouchableOpacity
-          style={[styles.inputGroup, { padding: 10, flex: 1 }]}
+          style={[styles.inputGroup, { paddingVertical: 10, flex: 1 }]}
           onPress={() => setShowStartDate(true)}
         >
           <Ionicons
@@ -217,7 +217,7 @@ export default function AddMedicationForm() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.inputGroup, { padding: 10, flex: 1 }]}
+          style={[styles.inputGroup, { paddingVertical: 10, flex: 1 }]}
           onPress={() => setShowEndDate(true)}
         >
           <Ionicons
@@ -250,7 +250,7 @@ export default function AddMedicationForm() {
       {/* Set remainder option : */}
       <View style={styles.dateInputGroup}>
         <TouchableOpacity
-          style={[styles.inputGroup, { padding: 10, flex: 1 }]}
+          style={[styles.inputGroup, { paddingVertical: 10, flex: 1 }]}
           onPress={() => setShowTimePicker(true)}
         >
           <Ionicons
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#BCCCE0",
+    // borderColor: "#BCCCE0",
     marginTop: 10,
     backgroundColor: "white",
   },
@@ -324,7 +324,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   icon: {
-    color: "#4DA5D1",
+    color: "#7777A6",
     borderRightWidth: 1,
     paddingRight: 12,
     borderColor: "#BCCCE0",
@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    backgroundColor: "#4DA5D1",
+    backgroundColor: "#8383AF",
     borderRadius: 15,
     width: "100%",
     marginTop: 10,
