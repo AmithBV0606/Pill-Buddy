@@ -1,10 +1,10 @@
 {
   "expo": {
     "name": "Pill-Buddy",
-    "slug": "Pill-Buddy",
+    "slug": "pill-buddy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/Pill-Buddy.webp",
+    "icon": "./assets/images/Pill-Buddy.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,27 +13,28 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/Pill-Buddy.webp",
+        "foregroundImage": "./assets/images/Pill-Buddy.png",
         "backgroundColor": "#0A0A0A"
-      }, 
+      },
       "splash": {
-        "image": "./assets/images/Pill-Buddy.webp",
+        "image": "./assets/images/Pill-Buddy.png",
         "backgroundColor": "#0A0A0A",
         "imageWidth": 500,
         "imageHeight": 500
-      }
+      },
+      "package": "com.amithbv.PillBuddy"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/Pill-Buddy.webp"
+      "favicon": "./assets/images/Pill-Buddy.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/images/Pill-Buddy.webp",
+          "image": "./assets/images/Pill-Buddy.png",
           "imageWidth": 500,
           "imageHeight": 500,
           "resizeMode": "contain",
@@ -43,6 +44,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "d777314b-e959-4967-9413-7b66f33b4a73"
+      }
+    },
+    "owner": "amithbv"
   }
 }
