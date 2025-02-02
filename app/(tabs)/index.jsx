@@ -18,7 +18,7 @@ export default function HomeScreen() {
             width: "100%",
             // backgroundColor: "#B0D7FF",
             // backgroundColor: Colors.YELLOW,
-            backgroundColor: "#fff",
+            // backgroundColor: "#fff",
             // position: "relative", 
           }}
         >
@@ -27,7 +27,6 @@ export default function HomeScreen() {
           {/* <Button title="Logout" onPress={async () => await removeLocalStorage()} /> */}
 
           <Header />
-          {/* <EmptyState /> */}
           <MedicationList />
         </View>
       }
