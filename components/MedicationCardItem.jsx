@@ -3,14 +3,20 @@ import React, { useEffect, useState } from "react";
 import Colors from "../constant/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function MedicationCardItem({ medicine, selectedDate="" }) {
+export default function MedicationCardItem({ medicine, selectedDate = "" }) {
   const [status, setStatus] = useState();
+  // console.log(medicine)
 
   const checkStatus = () => {
-    const data = medicine?.action?.find((item) => item.date == selectedDate);
-    // console.log(data);
-    setStatus(data);
+    try {
+      const data = medicine?.action?.find((item) => item.date === selectedDate);
+      // console.log("--|--",data);
+      // console.log(typeof data, data);
+      setStatus(data);
+    } catch (error) {}
   };
+
+  console.log(status);
 
   useEffect(() => {
     checkStatus();
@@ -56,7 +62,9 @@ export default function MedicationCardItem({ medicine, selectedDate="" }) {
           {status?.status == "Taken" ? (
             <Ionicons name="checkmark-circle" size={24} color={Colors.GREEN} />
           ) : (
-            <Ionicons name="close-circle" size={24} color={"red"} />
+            status?.status == "Missed" && (
+              <Ionicons name="close-circle" size={24} color={"red"} />
+            )
           )}
         </View>
       )}

@@ -8,7 +8,7 @@ export default function EmptyState() {
   return (
     <View
       style={{
-        marginTop: 80,
+        marginTop: 30,
         display: "flex",
         alignItems: "center",
       }}
@@ -38,7 +38,7 @@ export default function EmptyState() {
 
       <TouchableOpacity
         style={{
-            backgroundColor: "#4DA5D1",
+            backgroundColor: "#8475BD",
             padding: 15,
             borderRadius: 10,
             width: "100%", 
