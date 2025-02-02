@@ -16,8 +16,6 @@ export default function MedicationCardItem({ medicine, selectedDate = "" }) {
     } catch (error) {}
   };
 
-  console.log(status);
-
   useEffect(() => {
     checkStatus();
   }, [medicine]);

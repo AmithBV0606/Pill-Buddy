@@ -128,17 +128,7 @@ export default function History() {
               onRefresh={() => getMedicationList(selectedDate)}
               refreshing={loading ? true : false}
               renderItem={({ item, index }) => (
-                <TouchableOpacity
-                  onPress={() =>
-                    router.push({
-                      pathname: "/action-modal",
-                      params: {
-                        ...item,
-                        selectedDate: selectedDate,
-                      },
-                    })
-                  }
-                >
+                <TouchableOpacity>
                   <MedicationCardItem
                     medicine={item}
                     selectedDate={selectedDate}
